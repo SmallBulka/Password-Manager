@@ -51,7 +51,7 @@ function SavedPasswords() {
       }
   
       const newPasswords = [...passwords, newPassword]
-      setPasswords(newPasswords)
+      setPasswords(newPasswords=>newPasswords)
       localStorage.setItem('passwords', JSON.stringify(newPasswords))
   
       setWebsite('')

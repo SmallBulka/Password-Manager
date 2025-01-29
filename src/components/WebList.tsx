@@ -3,14 +3,14 @@ import { useState } from "react";
 
 
 
-function WebList({ websites, onDelete }) {
-  const handleDelete = (index) => {
+function WebList({ websites = [], onDelete }: any) {
+  const handleDelete = (index: number) => {
     onDelete(index)
   }
   //поиск по сайтам
   const [searchTerm, setSearchTerm] = useState<string>('');
   // websites.map(website => console.log("website",website))
-  const filteredItems = websites.filter(website =>
+  const filteredItems = websites.filter((website: any) =>
     website.website?.toLowerCase().includes(searchTerm?.toLowerCase())
   );
 
@@ -24,7 +24,7 @@ function WebList({ websites, onDelete }) {
       </div>
        {/* список сайтов */}
       <ul className='space-y-4'>
-        {filteredItems.map((website, index) => (
+        {filteredItems.map((website: any, index: number) => (
           <li
             key={index}
             className='flex items-center space-x-4 border-b pb-2 relative'
@@ -32,9 +32,7 @@ function WebList({ websites, onDelete }) {
             <img
               src={`https://${website.website}.com/favicon.ico`}
               alt='Web'
-              onError={(e) => {
-                e.target.src =
-                  'https://img.icons8.com/color/48/internet--v1.png'
+              onError={(event) => {event.currentTarget.onerror = null; event.currentTarget.src ='https://img.icons8.com/color/48/internet--v1.png'
               }}
               className='w-8 h-8 rounded-full'
             />
